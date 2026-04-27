@@ -1,0 +1,40 @@
+{
+  "jars": [
+    {
+      "identifier": {
+        "group": "com.googlecode.soundlibs",
+        "artifact": "mp3spi"
+      },
+      "version": {
+        "range": "[1.9.5.4,1.9.6)",
+        "artifactVersion": "1.9.5.4"
+      },
+      "path": "META-INF/jarjar/mp3spi-1.9.5.4.jar",
+      "isObfuscated": false
+    },
+    {
+      "identifier": {
+        "group": "com.googlecode.soundlibs",
+        "artifact": "jlayer"
+      },
+      "version": {
+        "range": "[1.0.1.4,1.0.2)",
+        "artifactVersion": "1.0.1.4"
+      },
+      "path": "META-INF/jarjar/jlayer-1.0.1.4.jar",
+      "isObfuscated": false
+    },
+    {
+      "identifier": {
+        "group": "com.googlecode.soundlibs",
+        "artifact": "tritonus-share"
+      },
+      "version": {
+        "range": "[0.3.7.4,0.3.8)",
+        "artifactVersion": "0.3.7.4"
+      },
+      "path": "META-INF/jarjar/tritonus-share-0.3.7.4.jar",
+      "isObfuscated": false
+    }
+  ]
+}

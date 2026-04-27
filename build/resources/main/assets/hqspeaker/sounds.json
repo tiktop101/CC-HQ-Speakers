@@ -1,0 +1,12 @@
+{
+  "hq_speaker": {
+    "category": "block",
+    "replace": true,
+    "sounds": [
+      {
+        "name": "hqspeaker:hq_speaker",
+        "stream": true
+      }
+    ]
+  }
+}

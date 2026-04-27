@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="LGPL-3.0"
+
+[[mods]]
+modId="hqspeaker"
+version="1.0.0"
+displayName="CC:HQ Speakers"
+authors="tom"
+description='''
+High-quality upgrade layer for CC:Tweaked speaker blocks.
+Uses the normal computercraft:speaker block, adding MP3/OGG/WAV, streams, ICY metadata.
+'''
+
+[[dependencies.hqspeaker]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.hqspeaker]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.hqspeaker]]
+modId="computercraft"
+mandatory=true
+versionRange="[1.100,)"
+ordering="NONE"
+side="BOTH"

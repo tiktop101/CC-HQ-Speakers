@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7.+'
+    }
+}
+
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '6.0.24'
+}
+
+apply plugin: 'org.spongepowered.mixin'
+
+jarJar.enable()
+
+version = '1.1.4-ccaudiofix'
+group = 'com.tom.hqspeaker'
+
+base {
+    archivesName = 'hqspeaker'
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client { workingDirectory project.file('run'); property 'forge.logging.console.level', 'info'; mods { hqspeaker { source sourceSets.main } } }
+        server { workingDirectory project.file('run'); property 'forge.logging.console.level', 'info'; mods { hqspeaker { source sourceSets.main } } }
+    }
+}
+
+mixin {
+    add sourceSets.main, 'hqspeaker.refmap.json'
+    config 'hqspeaker.mixins.json'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { name = "CC: Tweaked"; url = "https://maven.squiddev.cc" }
+    maven { name = "Minecraft Forge"; url = "https://maven.minecraftforge.net/" }
+    maven { name = "Valkyrien Skies"; url = "https://maven.valkyrienskies.org" }
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+    implementation fg.deobf("cc.tweaked:cc-tweaked-1.20.1-forge:1.116.1")
+    compileOnly name: "valkyrienskies-120-2.4.8.1"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    // Same working dependency path as hqspeaker: OGG uses Minecraft/LWJGL STBVorbis, MP3/WAV use JavaSound/mp3spi.
+    jarJar(group: 'com.googlecode.soundlibs', name: 'mp3spi',         version: '[1.9.5.4,1.9.6)') { jarJar.pin(it, '1.9.5.4') }
+    jarJar(group: 'com.googlecode.soundlibs', name: 'jlayer',         version: '[1.0.1.4,1.0.2)') { jarJar.pin(it, '1.0.1.4') }
+    jarJar(group: 'com.googlecode.soundlibs', name: 'tritonus-share', version: '[0.3.7.4,0.3.8)') { jarJar.pin(it, '0.3.7.4') }
+    implementation 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
+    implementation 'com.googlecode.soundlibs:jlayer:1.0.1.4'
+    implementation 'com.googlecode.soundlibs:tritonus-share:0.3.7.4'
+}
+
+jar {
+    manifest {
+        attributes(
+            "Specification-Title": "HQSpeaker",
+            "Specification-Version": "1",
+            "Implementation-Title": project.name,
+            "Implementation-Version": version,
+            "Implementation-Vendor": "HQSpeaker",
+            "MixinConfigs": "hqspeaker.mixins.json"
+        )
+    }
+}
