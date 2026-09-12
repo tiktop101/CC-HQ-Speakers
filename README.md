@@ -1,143 +1,87 @@
-#  CC:HQ Speakers
+# CC:HQ Speaker's
 
 # A mod for Minecraft, CC Tweaked Speaker's
 
+Why you need this mod?
+
+* It gives the ability of wayyy higher quality Audio, From the SAME CC Speaker's
+
 uses cc tweaked's current speaker's and gives them a signif "Upgrade"
-
 adds mp3 support, Wav, Ogg, PCM obv, HLS, TS.
+function's
 
-function's 
+Playback
+playAudio(samples) playAudio(samples, volume)
+playNote(instrument, volume, pitch) playSound(soundName) playSound(soundName, volume) playSound(soundName, volume, pitch)
+speakerPlay(audio) speakerPlay(audio, volume)
+speakerStop()
+speakerVolume(volume)
+setLooping(true) setLooping(false)
 
-playAudio(samples)
-playAudio(samples, volume)
+Pause/Resume
+speakerPause() speakerResume() speakerIsPaused()
 
-playNote(instrument, volume, pitch)
-playSound(soundName)
-playSound(soundName, volume)
-playSound(soundName, volume, pitch)
+Seek/Skip
+speakerSeek(deltaSeconds)
+speakerSkip() speakerSkip(seconds)
+speakerSkipBack() speakerSkipBack(seconds)
 
-speakPCM(samples)
-speakPCM(samples, volume)
+Status/Info
+speakerIsPlaying()
 
-speakAudio(bytes)
-speakAudio(bytes, volume)
+speakerQueueSize()
 
-speakFile(bytes)
-speakFile(bytes, volume)
+speakerProgress() 
 
-speakPacked(bytes)
-speakPacked(bytes, volume)
+speakerElapsedSamples()
 
-speakWav(bytes)
-speakWav(bytes, volume)
+speakerTotalSamples()
 
-speakOgg(bytes)
-speakOgg(bytes, volume)
+speakerSampleRate() 
 
-speakMp3(bytes)
-speakMp3(bytes, volume)
+speakerMaxSamples()
 
-speakStream(url)
-speakStream(url, volume)
+speakerMaxAudioBytes()
 
-speakHLS(url)
-speakHLS(url, volume)
+speakerMaxOggBytes()
 
-speakTS(url)
-speakTS(url, volume)
+speakerMaxFileBytes()
 
-speakStop()
-speakStopAll()
+speakerSupportedFiles()
 
-speakVolume(volume)
-
-setLooping(true)
-setLooping(false)
-
-speakIsPlaying()
-speakQueueSize()
-
-speakSampleRate()
-speakMaxSamples()
-speakMaxAudioBytes()
-speakMaxOggBytes()
-speakMaxFileBytes()
-speakSupportedFiles()
-
+Streaming
 isStreaming()
+
 getStreamUrl()
+
 getStreamFormats()
+
 getStreamMeta()
+
 getStreamTitle()
+
 getStreamArtist()
+
 getStreamSong()
+
 getStreamStation()
+
 getStreamGenre()
+
 getStreamMetaSerial()
 
-getPeripheralType()
-getPos()
+Misc
+getPeripheralType() getPos()
 
-getSpeakerCount()
-getSpeakers()
-getSpeakerPos(index)
+Multi-speaker
+getSpeakerCount() getSpeakers() getSpeakerPos(index)
 
-playNoteAll(instrument, volume, pitch)
-playSoundAll(soundName)
-playSoundAll(soundName, volume)
-playSoundAll(soundName, volume, pitch)
-playAudioAll(samples)
-playAudioAll(samples, volume)
+All (every speaker on the computer)
+playNoteAll(instrument, volume, pitch) playSoundAll(soundName) playSoundAll(soundName, volume) playSoundAll(soundName, volume, pitch) playAudioAll(samples) playAudioAll(samples, volume)
+speakerPlayAll(audio) speakerPlayAll(audio, volume) speakerStopAll() speakerVolumeAll(volume) setLoopingAll(true) setLoopingAll(false)
+speakerPauseAll() speakerResumeAll() speakerSeekAll(deltaSeconds) speakerSkipAll() speakerSkipAll(seconds) speakerSkipBackAll() speakerSkipBackAll(seconds)
 
-speakPCMAll(samples)
-speakPCMAll(samples, volume)
-speakAudioAll(bytes)
-speakAudioAll(bytes, volume)
-speakFileAll(bytes)
-speakFileAll(bytes, volume)
-speakPackedAll(bytes)
-speakPackedAll(bytes, volume)
-speakWavAll(bytes)
-speakWavAll(bytes, volume)
-speakOggAll(bytes)
-speakOggAll(bytes, volume)
-speakMp3All(bytes)
-speakMp3All(bytes, volume)
-speakVolumeAll(volume)
-setLoopingAll(true)
-setLoopingAll(false)
-speakStreamAll(url)
-speakStreamAll(url, volume)
-speakHLSAll(url)
-speakHLSAll(url, volume)
-speakTSAll(url)
-speakTSAll(url, volume)
-
-playNoteAt(index, instrument, volume, pitch)
-playSoundAt(index, soundName)
-playSoundAt(index, soundName, volume)
-playSoundAt(index, soundName, volume, pitch)
-playAudioAt(index, samples)
-playAudioAt(index, samples, volume)
-
-speakPCMAt(index, samples)
-speakPCMAt(index, samples, volume)
-speakAudioAt(index, bytes)
-speakAudioAt(index, bytes, volume)
-speakFileAt(index, bytes)
-speakFileAt(index, bytes, volume)
-speakPackedAt(index, bytes)
-speakPackedAt(index, bytes, volume)
-speakWavAt(index, bytes)
-speakWavAt(index, bytes, volume)
-speakOggAt(index, bytes)
-speakOggAt(index, bytes, volume)
-speakMp3At(index, bytes)
-speakMp3At(index, bytes, volume)
-speakStreamAt(index, url)
-speakStreamAt(index, url, volume)
-speakHLSAt(index, url)
-speakHLSAt(index, url, volume)
-speakTSAt(index, url)
-speakTSAt(index, url, volume)
-speakStopAt(index)
+At (one speaker by index)
+playNoteAt(index, instrument, volume, pitch) playSoundAt(index, soundName) playSoundAt(index, soundName, volume) playSoundAt(index, soundName, volume, pitch) playAudioAt(index, samples) playAudioAt(index, samples, volume)
+speakerPlayAt(index, audio) speakerPlayAt(index, audio, volume) speakerStopAt(index)
+speakerPauseAt(index) speakerResumeAt(index) speakerIsPausedAt(index) speakerSeekAt(index, deltaSeconds) speakerSkipAt(index) speakerSkipAt(index, seconds) speakerSkipBackAt(index) speakerSkipBackAt(index, seconds) speakerProgressAt(index)
