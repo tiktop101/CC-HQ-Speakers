@@ -6,6 +6,13 @@ Why you need this mod?
 
 * It gives the ability of wayyy higher quality Audio, From the SAME CC Speaker's
 
+* 
+If Using sound physics remastered
+
+set update moving sounds to true
+
+so it muffles it through walls etc etc
+
 uses cc tweaked's current speaker's and gives them a signif "Upgrade"
 adds mp3 support, Wav, Ogg, PCM obv, HLS, TS.
 function's
