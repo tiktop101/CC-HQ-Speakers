@@ -6,15 +6,11 @@ Why you need this mod?
 
 * It gives the ability of wayyy higher quality Audio, From the SAME CC Speaker's
 
-* 
-If Using sound physics remastered
-
-set update moving sounds to true
-
-so it muffles it through walls etc etc
+* If Using sound physics remastered, set update moving sounds to true so it muffles it through walls etc etc
 
 uses cc tweaked's current speaker's and gives them a signif "Upgrade"
 adds mp3 support, Wav, Ogg, PCM obv, HLS, TS.
+
 function's
 
 Playback
@@ -24,6 +20,13 @@ speakerPlay(audio) speakerPlay(audio, volume)
 speakerStop()
 speakerVolume(volume)
 setLooping(true) setLooping(false)
+
+Channels (8 per speaker by default, channel 1 = normal speaker)
+speakerPlayChannel(channel, audio) speakerPlayChannel(channel, audio, volume) speakerPlayChannel(channel, audio, volume, loop)
+speakerChannel(channel, "stop") speakerChannel(channel, "pause") speakerChannel(channel, "resume") speakerChannel(channel, "volume", volume)
+speakerChannelStatus(channel) > { playing, paused, looping }
+channel 0 in speakerChannel = every channel
+event: hqspeaker_channel_empty, name, channel
 
 Pause/Resume
 speakerPause() speakerResume() speakerIsPaused()
@@ -35,46 +38,27 @@ speakerSkipBack() speakerSkipBack(seconds)
 
 Status/Info
 speakerIsPlaying()
-
 speakerQueueSize()
-
-speakerProgress() 
-
+speakerProgress()
 speakerElapsedSamples()
-
 speakerTotalSamples()
-
-speakerSampleRate() 
-
+speakerSampleRate()
 speakerMaxSamples()
-
 speakerMaxAudioBytes()
-
 speakerMaxOggBytes()
-
 speakerMaxFileBytes()
-
 speakerSupportedFiles()
 
 Streaming
 isStreaming()
-
 getStreamUrl()
-
 getStreamFormats()
-
 getStreamMeta()
-
 getStreamTitle()
-
 getStreamArtist()
-
 getStreamSong()
-
 getStreamStation()
-
 getStreamGenre()
-
 getStreamMetaSerial()
 
 Misc
@@ -92,3 +76,13 @@ At (one speaker by index)
 playNoteAt(index, instrument, volume, pitch) playSoundAt(index, soundName) playSoundAt(index, soundName, volume) playSoundAt(index, soundName, volume, pitch) playAudioAt(index, samples) playAudioAt(index, samples, volume)
 speakerPlayAt(index, audio) speakerPlayAt(index, audio, volume) speakerStopAt(index)
 speakerPauseAt(index) speakerResumeAt(index) speakerIsPausedAt(index) speakerSeekAt(index, deltaSeconds) speakerSkipAt(index) speakerSkipAt(index, seconds) speakerSkipBackAt(index) speakerSkipBackAt(index, seconds) speakerProgressAt(index)
+
+Channel examples
+speakerPlayChannel(2, bytes, 1.0, true) > loops music on channel 2
+speakerPlayChannel(3, sfx) > sfx on top
+speakerChannel(2, "volume", 0.3) > turns channel 2 down
+speakerChannel(0, "pause") > pauses all channels
+
+Config (hqspeaker-server.toml)
+[formats] pcmPlayable, mp3Playable, oggPlayable, hlsPlayable, tsPlayable, wavPlayable
+[limits] maxAudioFileSizeMB (default 8), maxVolume (default 1.0, max 16), maxChannels (default 8, max 32)
